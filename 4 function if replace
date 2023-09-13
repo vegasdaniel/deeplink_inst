@@ -1,10 +1,10 @@
 <html>
 <script>
-    // Функция для определения операционной системы пользователя
-    function detectOS() {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+// Функция для определения операционной системы пользователя
+function detectOS() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        // Проверка на Android
+    // Проверка на Android
     if (/Android/i.test(userAgent)) {
         window.location.replace("intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end");
     }
