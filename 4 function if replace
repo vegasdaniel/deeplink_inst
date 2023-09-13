@@ -16,9 +16,10 @@
     else {
         window.location.replace("https://www.instagram.com/durov/");
     }
-    }
+}
 
-    // Вызвать функцию при загрузке страницы
-    window.onload = detectOS;
+// Вызвать функцию при загрузке страницы
+window.onload = detectOS;
+
 </script>
 </html>
