@@ -1,35 +1,24 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Открытие Instagram в айфрейме</title>
-</head>
-<body>
-
-<iframe id="instagramFrame" width="500" height="500"></iframe>
-
 <script>
-    // Функция для определения операционной системы пользователя и установки src айфрейма
-    function openInstagramInFrame() {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const instagramFrame = document.getElementById("instagramFrame");
+function detectOS() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        // Проверка на Android
-        if (/android/i.test(userAgent)) {
-            instagramFrame.src = "intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end";
-        }
-        // Проверка на iOS
-        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            instagramFrame.src = "instagram://user?username=durov";
-        }
-        // В остальных случаях перейти на обычную ссылку на профиль Instagram
-        else {
-            instagramFrame.src = "https://www.instagram.com/durov/";
-        }
+    // Проверка на Android
+    if (/Android/i.test(userAgent)) {
+        window.location.replace("intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end");
     }
+    // Проверка на iOS
+    else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.replace("instagram://user?username=durov");
+    }
+    // В остальных случаях перейти на обычную ссылку на профиль Instagram
+    else {
+        window.location.replace("https://www.instagram.com/durov/");
+    }
+}
 
-    // Вызвать функцию при загрузке страницы
-    window.onload = openInstagramInFrame;
+// Вызвать функцию при загрузке страницы
+window.onload = detectOS;
+
 </script>
-
-</body>
 </html>
