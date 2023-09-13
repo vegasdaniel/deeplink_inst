@@ -1,5 +1,6 @@
 <html>
 <script>
+// Функция для определения операционной системы пользователя
 function detectOS() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
