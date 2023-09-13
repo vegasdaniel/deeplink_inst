@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Перенаправление в Instagram</title>
+    <title>Открытие Instagram в айфрейме</title>
 </head>
 <body>
 
+<iframe id="instagramFrame" width="500" height="500"></iframe>
+
 <script>
-    // Функция для определения операционной системы пользователя
-    function detectOS() {
+    // Функция для определения операционной системы пользователя и установки src айфрейма
+    function openInstagramInFrame() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const instagramFrame = document.getElementById("instagramFrame");
 
         // Проверка на Android
         if (/android/i.test(userAgent)) {
-            window.location.href = "intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end";
+            instagramFrame.src = "intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end";
         }
         // Проверка на iOS
         else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            window.location.href = "instagram://user?username=durov";
+            instagramFrame.src = "instagram://user?username=durov";
         }
         // В остальных случаях перейти на обычную ссылку на профиль Instagram
         else {
-            window.location.href = "https://www.instagram.com/durov/";
+            instagramFrame.src = "https://www.instagram.com/durov/";
         }
     }
 
     // Вызвать функцию при загрузке страницы
-    window.onload = detectOS;
+    window.onload = openInstagramInFrame;
 </script>
 
 </body>
