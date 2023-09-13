@@ -1,0 +1,13 @@
+<html>
+<script>
+var destination = "instagram://user?username=durov"; 
+if( navigator.userAgent.match(/Android/i) ) {
+  // use Android's redirect
+  document.location = destination;   
+}   
+else {
+  // use iOS redirect
+  window.location.replace( destination );
+}
+</script>
+</html>
