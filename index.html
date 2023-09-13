@@ -1,24 +1,24 @@
 <html>
 <script>
-function detectOS() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Функция для определения операционной системы пользователя
+    function detectOS() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    // Проверка на Android
-    if (/Android/i.test(userAgent)) {
-        window.location.replace("intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end");
+        // Проверка на Android
+        if (/android/i.test(userAgent)) {
+            window.location.replace = "intent://instagram.com/_u/durov#Intent;package=com.instagram.android;scheme=https;end";
+        }
+        // Проверка на iOS
+        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.replace = "instagram://user?username=durov";
+        }
+        // В остальных случаях перейти на обычную ссылку на профиль Instagram
+        else {
+            window.location.replace = "https://www.instagram.com/durov/";
+        }
     }
-    // Проверка на iOS
-    else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.replace("instagram://user?username=durov");
-    }
-    // В остальных случаях перейти на обычную ссылку на профиль Instagram
-    else {
-        window.location.replace("https://www.instagram.com/durov/");
-    }
-}
 
-// Вызвать функцию при загрузке страницы
-window.onload = detectOS;
-
+    // Вызвать функцию при загрузке страницы
+    window.onload = detectOS;
 </script>
 </html>
