@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Перенаправление в Instagram</title>
+</head>
+<body>
+
+<script>
+    // Функция для определения операционной системы пользователя
+    function detectOS() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Проверка на Android
+        if (/android/i.test(userAgent)) {
+            window.location.href = "intent://instagram.com/_u/username#Intent;package=com.instagram.android;scheme=https;end";
+        }
+        // Проверка на iOS
+        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.href = "instagram://user?username=username";
+        }
+        // В остальных случаях перейти на обычную ссылку на профиль Instagram
+        else {
+            window.location.href = "https://www.instagram.com/username/";
+        }
+    }
+
+    // Вызвать функцию при загрузке страницы
+    window.onload = detectOS;
+</script>
+
+</body>
+</html>
